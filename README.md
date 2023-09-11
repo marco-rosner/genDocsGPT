@@ -9,3 +9,12 @@ The script demand a ChatGPT API Key that you can generate after create your acco
 ```
 API_KEY="chatgpt_api_Key"
 ```
+
+## How to use
+
+The command have the params:
+
+  * model_path (-m, --model) **REQUIRED** - The path that will be used to read the models used by the API
+  * api_path (-a, --api) **REQUIRED** - The path that will be used to read the api handlers
+  * output_file (-o, --output) - The path to the file that will be created with the MarkDown documentation. Default value is `./api.md`.
+  * help (-h, --help) - The help instructions.
