@@ -2,12 +2,16 @@ import sys
 
 from check_params import check_params
 from gen_docs import generate_docs_with_chatgpt
+from build_prompt import build_prompt
+from write_doc import write_documentation
 
 if __name__ == "__main__":
-    check_params(sys.argv)
+    params = check_params(sys.argv)
     
-    user_prompt = {"role": "user", "content": "Generate a api docs on MarkDown"}
+    prompt = build_prompt(params)
+    
+    chatgpt_response = generate_docs_with_chatgpt(prompt)
 
-    chatbot_reponse = generate_docs_with_chatgpt([user_prompt])
+    write_documentation(params["output_file"], chatgpt_response)
 
-    print(chatbot_reponse)
+    print("API documentation generated")

@@ -7,9 +7,9 @@ def validate_arg(arg, help):
         sys.exit(2)
 
 def check_params(args):
-    model_path = ""
-    api_path = ""
-    help = "{0} -m <model_path> -a <api_path> -o <output_file>".format(args[0])
+    model_paths = ""
+    api_paths = ""
+    help = "{0} -m <model_paths> -a <api_paths> -o <output_file>".format(args[0])
 
     try:
         opts, args = getopt.getopt(args[1:], "hm:a:o:", ["help", "model=", "api=", "output="])
@@ -22,9 +22,9 @@ def check_params(args):
             print(help)
             sys.exit(2)
         elif opt in ("-m", "--model"):
-            model_path = arg
+            model_paths = arg
         elif opt in ("-a", "--api"):
-            api_path = arg
+            api_paths = arg
         elif opt in ("-o", "--output"):
             output_file = arg
     try:
@@ -32,12 +32,14 @@ def check_params(args):
     except NameError:
         output_file = "./api.md" # default output file
     
-    validate_arg(model_path, "Model path (-m, --model)")
-    validate_arg(api_path, "Api path (-a, --api)")
+    validate_arg(model_paths, "Model path (-m, --model)")
+    validate_arg(api_paths, "Api path (-a, --api)")
 
-    print('model_path:', model_path)
-    print('api_path:', api_path)
-    print('output_file:', output_file )
+    return {
+        "model_paths": [model_paths],
+        "api_paths": [api_paths],
+        "output_file": output_file
+    }
 
     # read the path and send the blob to ChatGPT
 
