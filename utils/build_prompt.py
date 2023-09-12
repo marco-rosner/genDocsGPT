@@ -1,4 +1,4 @@
-from read_files import read_paths
+from utils.read_files import read_paths
 
 def build_prompt(params):
     prompt = "Generate API documentation in MarkDown with these models:\n"
