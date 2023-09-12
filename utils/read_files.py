@@ -1,8 +1,9 @@
 import os
 import glob
 
-def read_file(file):
-    print(file)
+def read_file(file, verbose):
+    if verbose:
+        print(file)
             
     if os.path.isfile(file):
         text_file = open(file, "r")
@@ -15,12 +16,12 @@ def read_file(file):
     
     return ""
 
-def read_paths(paths):
+def read_paths(paths, verbose):
     print("Reading files...")
 
     str_files = ""
     for path in paths:
         for file in glob.iglob(path + '/**', recursive=True):
-            str_files = str_files + os.linesep + read_file(file)
+            str_files = str_files + os.linesep + read_file(file, verbose)
     
     return str_files

@@ -11,6 +11,7 @@ def validate_arg(arg, help):
 def check_params(args):
     model_paths = ""
     api_paths = ""
+    verbose = False
 
     try:
         opts, args = getopt.getopt(args[1:], "vhm:a:o:", ["verbose", "help", "model=", "api=", "output="])

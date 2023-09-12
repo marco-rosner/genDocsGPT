@@ -4,11 +4,15 @@ def build_prompt(params):
     prompt = "Generate API documentation in MarkDown with these models:\n"
     
     print("Accessing models paths...")
-    prompt = prompt + read_paths(params["model_paths"])
+    prompt = prompt + read_paths(params["model_paths"], params["verbose"])
 
     prompt = prompt + "\n And these handlers: \n"
     
     print("\nAccessing api paths...")
-    prompt = prompt + read_paths(params["api_paths"])
+    prompt = prompt + read_paths(params["api_paths"], params["verbose"])
+
+    if params["verbose"]:
+        print("\nPrompt content:")
+        print(prompt)
 
     return [{"role": "user", "content": prompt}]

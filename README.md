@@ -10,11 +10,20 @@ The script demand a ChatGPT API Key that you can generate after create your acco
 API_KEY="chatgpt_api_Key"
 ```
 
-## How to use
+## Usage
 
-The command have the params:
+```
+genDocsGPT.py [-h] [-v, --verbose] -m / --model <model_paths> -a / --api <api_paths> [-o / --output <filename>]
 
-  * model_path (-m, --model) **REQUIRED** - The path that will be used to read the models used by the API
-  * api_path (-a, --api) **REQUIRED** - The path that will be used to read the api handlers
-  * output_file (-o, --output) - The path to the file that will be created with the MarkDown documentation. Default value is `./api.md`.
-  * help (-h, --help) - The help instructions.
+options:
+  -h, --help            show this help message and exit
+  -v, --verbose         Show all the messages to debug
+  -m / --model <model_paths>
+                        Model paths. If more than one, separate with a comma
+  -a / --api <api_paths>
+                        API paths. If more than one, separate with a comma
+  -o / --output <filename>
+                        Filename to the documentation generated. Default: ./api.md
+
+We do not recommend using it in non-open-source projects.
+```
