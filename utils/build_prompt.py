@@ -1,7 +1,7 @@
 from utils.read_files import read_paths
 
 def build_prompt(params):
-    prompt = "Generate API documentation in MarkDown with these models:\n"
+    prompt = "Generate API documentation with table of contents, models list, JSON and curl examples of them in Swagger style using MarkDown based in these models:\n"
     
     print("Accessing models paths...")
     prompt = prompt + read_paths(params["model_paths"], params["verbose"])

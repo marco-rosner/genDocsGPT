@@ -12,6 +12,4 @@ if __name__ == "__main__":
     
     chatgpt_response = generate_docs_with_chatgpt(prompt)
 
-    write_documentation(params["output_file"], chatgpt_response)
-
-    print("API documentation generated")
+    write_documentation(params, chatgpt_response)
