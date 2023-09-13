@@ -1,0 +1,48 @@
+import pytest
+
+from utils.check_params import check_params
+
+@pytest.fixture
+def args():
+    return ['genDocsGPT.py', '-m', '../lightweight-go-server/models', '-a', '../lightweight-go-server/gin']
+
+@pytest.fixture
+def args_o():
+    return ['genDocsGPT.py', '-v', '-m', '../lightweight-go-server/models', '-a', '../lightweight-go-server/gin', '-o', 'filename.md']
+
+@pytest.fixture
+def args_verbose():
+    return ['genDocsGPT.py', '--verbose', '--model', '../lightweight-go-server/models', '--api', '../lightweight-go-server/gin', '--output', 'filename.md']
+
+@pytest.fixture
+def args_f():
+    return ['genDocsGPT.py', '-X']
+
+def test_check_params(args):
+    result = check_params(args)
+
+    assert result["model_paths"] == ["../lightweight-go-server/models"]
+    assert result["api_paths"] == ["../lightweight-go-server/gin"]
+    assert result["output_file"] == "./api.md"
+    assert result["verbose"] == False
+
+def test_check_params_output_file(args_o):
+    result = check_params(args_o)
+
+    assert result["model_paths"] == ["../lightweight-go-server/models"]
+    assert result["api_paths"] == ["../lightweight-go-server/gin"]
+    assert result["output_file"] == "filename.md"
+    assert result["verbose"] == True
+
+def test_check_params_verbose(args_verbose):
+    result = check_params(args_verbose)
+
+    assert result["model_paths"] == ["../lightweight-go-server/models"]
+    assert result["api_paths"] == ["../lightweight-go-server/gin"]
+    assert result["output_file"] == "filename.md"
+    assert result["verbose"] == True
+
+def test_check_params_fail(args_f):
+    with pytest.raises(SystemExit) as pytest_wrapped_e: check_params(args_f)
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 2

@@ -22,6 +22,9 @@ def read_paths(paths, verbose):
     str_files = ""
     for path in paths:
         for file in glob.iglob(path + '/**', recursive=True):
-            str_files = str_files + os.linesep + read_file(file, verbose)
+            if str_files == "":
+                str_files = read_file(file, verbose)
+            else:
+                str_files = str_files + os.linesep + read_file(file, verbose)
     
     return str_files
