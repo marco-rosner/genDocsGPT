@@ -1,4 +1,4 @@
-name: genDocsGPT
+name: Test
 
 run-name: ${{ github.actor }} is testing > ${{ github.event.head_commit.message }}
 

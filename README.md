@@ -1,4 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python Versions](https://img.shields.io/badge/Python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11-blue)](https://www.python.org) [![Test workflow](https://github.com/marco-rosner/genDocsGPT/actions/workflows/test.yml/badge.svg)](https://github.com/marco-rosner/genDocsGPT/actions/workflows/test.yml)
 
 ## Generate Docs using ChatGPT
 
