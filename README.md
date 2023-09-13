@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+
 ## Generate Docs using ChatGPT
 
 Script to generate API documentation in MarkDown based in the models and api handlers for given project using ChatGPT.
