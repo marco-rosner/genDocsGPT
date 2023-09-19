@@ -15,7 +15,7 @@ API_KEY="chatgpt_api_Key"
 ## Usage
 
 ```
-genDocsGPT.py [-h] [-v, --verbose] -m / --model <model_paths> -a / --api <api_paths> [-o / --output <filename>]
+genDocsGPT [-h] [-v, --verbose] -m / --model <model_paths> -a / --api <api_paths> [-o / --output <filename>]
 
 options:
   -h, --help            show this help message and exit
@@ -26,6 +26,8 @@ options:
                         API paths. If more than one, separate with a comma
   -o / --output <filename>
                         Filename to the documentation generated. Default: ./api.md
+  -t / --token <token>  ChatGPT API KEY
+  --env <filename>      Env file that MUST and ONLY have API_KEY="chatgpt_api_key". Default: ./.env
 
 We do not recommend using it in non-open-source projects.
 ```

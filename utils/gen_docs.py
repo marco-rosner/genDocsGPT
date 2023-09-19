@@ -1,13 +1,9 @@
 import openai
-from os import environ as env
-from dotenv import load_dotenv
 
-load_dotenv()
-
-openai.api_key = env['API_KEY']
-
-def generate_docs_with_chatgpt(prompt, model="gpt-3.5-turbo"):
+def generate_docs_with_chatgpt(prompt, token, model="gpt-3.5-turbo"):
     print("\nGenerating API docs...")
+
+    openai.api_key = token
 
     response = openai.ChatCompletion.create(
         model=model,

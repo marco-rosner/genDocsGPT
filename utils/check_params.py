@@ -11,10 +11,11 @@ def validate_arg(arg, help):
 def check_params(args):
     model_paths = ""
     api_paths = ""
+    token = ""
     verbose = False
 
     try:
-        opts, args = getopt.getopt(args[1:], "vhm:a:o:", ["verbose", "help", "model=", "api=", "output="])
+        opts, args = getopt.getopt(args[1:], "vhm:a:o:t:", ["verbose", "help", "model=", "api=", "output=", "token=", "env="])
     except:
         cli_help_interface()
 
@@ -29,10 +30,20 @@ def check_params(args):
             api_paths = arg
         elif opt in ("-o", "--output"):
             output_file = arg
+        elif opt in ("-t", "--token"):
+            token = arg
+        elif opt in ("--env"):
+            env_file = arg
+
     try:
         output_file
     except NameError:
         output_file = "./api.md" # default output file
+
+    try:
+        env_file
+    except NameError:
+        env_file = "./.env" # default env file
     
     validate_arg(model_paths, "Model path (-m, --model)")
     validate_arg(api_paths, "Api path (-a, --api)")
@@ -41,6 +52,8 @@ def check_params(args):
         "model_paths": [model_paths],
         "api_paths": [api_paths],
         "output_file": output_file,
+        "token": token,
+        "env_file": env_file,
         "verbose": verbose
     }
 
