@@ -1,10 +1,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python Versions](https://img.shields.io/badge/Python-3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11-blue)](https://www.python.org) [![Test workflow](https://github.com/marco-rosner/genDocsGPT/actions/workflows/test.yml/badge.svg)](https://github.com/marco-rosner/genDocsGPT/actions/workflows/test.yml)
 
-![genDocsGPT](./resources/genDocsGPT.png?raw=true "genDocsGPT")
+![genDocsGPT](https://github.com/marco-rosner/genDocsGPT/raw/main/resources/genDocsGPT.png?raw=true "genDocsGPT")
 
 ## Generate Docs using ChatGPT
 
 CLI to generate API documentation in MarkDown based in the models and api handlers for given project using ChatGPT.
+
+## genDocsGPT badge
+
+[![genDocsGPT](https://img.shields.io/badge/Docs%20generated%20by-genDocsGPT-blue)](https://github.com/marco-rosner/genDocsGPT)
 
 ## ChatGPT API Key
 
