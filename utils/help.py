@@ -11,4 +11,5 @@ def cli_help_interface():
     parser.add_argument('-o / --output', metavar='<filename>',type=str, default="./api.md", help='Filename to the documentation generated. Default: ./api.md')
     parser.add_argument('-t / --token', metavar='<token>',type=str, help='ChatGPT API KEY')
     parser.add_argument('--env', metavar='<filename>',type=str, default="./.env", help='Env file that MUST and ONLY have API_KEY="chatgpt_api_key". Default: ./.env')
+    parser.add_argument('--gpt_model', metavar='<model>',type=str, default="gpt-3.5-turbo", help='Model that will be used by ChatGPT. Default: gpt-3.5-turbo')
     parser.parse_args()

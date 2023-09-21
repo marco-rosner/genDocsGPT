@@ -12,10 +12,17 @@ def check_params(args):
     model_paths = ""
     api_paths = ""
     token = ""
+    output_file = "./api.md" # default output file
+    env_file = "./.env" # default env file
+    gpt_model = "gpt-3.5-turbo" # default gpt model
     verbose = False
 
     try:
-        opts, args = getopt.getopt(args[1:], "vhm:a:o:t:", ["verbose", "help", "model=", "api=", "output=", "token=", "env="])
+        opts, args = getopt.getopt(
+            args[1:],
+            "vhm:a:o:t:",
+            ["verbose", "help", "model=", "api=", "output=", "token=", "env=", "gpt_model="]
+        )
     except:
         cli_help_interface()
 
@@ -34,16 +41,9 @@ def check_params(args):
             token = arg
         elif opt in ("--env"):
             env_file = arg
-
-    try:
-        output_file
-    except NameError:
-        output_file = "./api.md" # default output file
-
-    try:
-        env_file
-    except NameError:
-        env_file = "./.env" # default env file
+        elif opt in ("--gpt_model"):
+            gpt_model = arg
+        
     
     validate_arg(model_paths, "Model path (-m, --model)")
     validate_arg(api_paths, "Api path (-a, --api)")
@@ -54,6 +54,7 @@ def check_params(args):
         "output_file": output_file,
         "token": token,
         "env_file": env_file,
+        "gpt_model": gpt_model,
         "verbose": verbose
     }
 

@@ -15,6 +15,10 @@ def args_e():
     return ['genDocsGPT.py', '-v', '-m', '../lightweight-go-server/models', '-a', '../lightweight-go-server/gin', '--env', './.genDocsGPT']
 
 @pytest.fixture
+def args_m():
+    return ['genDocsGPT.py', '-v', '-m', '../lightweight-go-server/models', '-a', '../lightweight-go-server/gin', '--gpt_model', 'gpt_model']
+
+@pytest.fixture
 def args_o():
     return ['genDocsGPT.py', '-v', '-m', '../lightweight-go-server/models', '-a', '../lightweight-go-server/gin', '-o', 'filename.md']
 
@@ -33,6 +37,7 @@ def test_check_params(args):
     assert result["api_paths"] == ["../lightweight-go-server/gin"]
     assert result["output_file"] == "./api.md"
     assert result["env_file"] == "./.env"
+    assert result["gpt_model"] == "gpt-3.5-turbo"
     assert result["token"] == ""
     assert result["verbose"] == False
 
@@ -43,6 +48,7 @@ def test_check_params_token(args_t):
     assert result["api_paths"] == ["../lightweight-go-server/gin"]
     assert result["output_file"] == "./api.md"
     assert result["token"] == "token"
+    assert result["gpt_model"] == "gpt-3.5-turbo"
     assert result["verbose"] == True
 
 def test_check_params_env_file(args_e):
@@ -53,6 +59,18 @@ def test_check_params_env_file(args_e):
     assert result["output_file"] == "./api.md"
     assert result["env_file"] == "./.genDocsGPT"
     assert result["token"] == ""
+    assert result["gpt_model"] == "gpt-3.5-turbo"
+    assert result["verbose"] == True
+
+def test_check_params_gpt_model(args_m):
+    result = check_params(args_m)
+
+    assert result["model_paths"] == ["../lightweight-go-server/models"]
+    assert result["api_paths"] == ["../lightweight-go-server/gin"]
+    assert result["output_file"] == "./api.md"
+    assert result["env_file"] == "./.env"
+    assert result["token"] == ""
+    assert result["gpt_model"] == "gpt_model"
     assert result["verbose"] == True
 
 def test_check_params_output_file(args_o):
@@ -63,6 +81,7 @@ def test_check_params_output_file(args_o):
     assert result["output_file"] == "filename.md"
     assert result["env_file"] == "./.env"
     assert result["token"] == ""
+    assert result["gpt_model"] == "gpt-3.5-turbo"
     assert result["verbose"] == True
 
 def test_check_params_verbose(args_verbose):
@@ -73,6 +92,7 @@ def test_check_params_verbose(args_verbose):
     assert result["output_file"] == "filename.md"
     assert result["env_file"] == "./.env"
     assert result["token"] == ""
+    assert result["gpt_model"] == "gpt-3.5-turbo"
     assert result["verbose"] == True
 
 def test_check_params_fail(args_f):

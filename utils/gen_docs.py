@@ -1,12 +1,17 @@
 import openai
 
-def generate_docs_with_chatgpt(prompt, token, model="gpt-3.5-turbo"):
+from utils.get_token import get_token
+
+def generate_docs_with_chatgpt(prompt, params):
+    if params["verbose"]:
+        print("\nGPT Model configured: {0}".format(params['gpt_model']))
+
     print("\nGenerating API docs...")
 
-    openai.api_key = token
+    openai.api_key = get_token(params)
 
     response = openai.ChatCompletion.create(
-        model=model,
+        model=params['gpt_model'],
         messages=prompt,
         n=1,
         stop=None,
