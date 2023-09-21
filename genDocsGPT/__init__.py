@@ -1,5 +1,3 @@
-## Only used for CLI usage
-
 import sys
 
 from utils.check_params import check_params
@@ -8,7 +6,7 @@ from utils.build_prompt import build_prompt
 from utils.write_doc import write_documentation
 from utils.get_token import get_token
 
-if __name__ == "__main__":
+def main():
     params = check_params(sys.argv)
     
     prompt = build_prompt(params)
