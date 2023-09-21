@@ -19,7 +19,10 @@ def teardown():
 def test_write_documentation(params, response):
     write_documentation(params, response)
 
-    final_text = response + "\n\n*This documentation file was generated using [genDocsGPT](https://github.com/marco-rosner/genDocsGPT)*"
+    header = "[![genDocsGPT](https://img.shields.io/badge/Doc%20generated%20by-genDocsGPT-blue)](https://github.com/marco-rosner/genDocsGPT)\n\n"
+    footer = "\n\n*This documentation file was generated using [genDocsGPT](https://github.com/marco-rosner/genDocsGPT)*"
+
+    final_text = header + response + footer
 
     file = open("./utils/tests/filename.md", "r")
     text = file.read()
