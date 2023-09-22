@@ -3,7 +3,7 @@ import argparse
 def cli_help_interface():
     parser=argparse.ArgumentParser(
         prog='genDocsGPT',
-        description='''CLI to generate API documentation in MarkDown based in the models and api handlers for given project using ChatGPT.''',
+        description='''CLI to generate API documentation in MarkDown based on the models and api handlers for given project using ChatGPT.''',
         epilog="""We do not recommend using it in non-open-source projects.""")
     parser.add_argument('-v, --verbose', metavar='', help='Show all the messages to debug')
     parser.add_argument('-m / --model', metavar='<model_paths>', required=True, type=str, help='Model paths. If more than one, separate with a comma')
